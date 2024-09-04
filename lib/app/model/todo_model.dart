@@ -1,9 +1,9 @@
 class TodoModel {
   String title;
-  bool isDone;
+  bool isChecked;
 
   TodoModel({
     required this.title,
-    required this.isDone,
+    required this.isChecked,
   });
 }

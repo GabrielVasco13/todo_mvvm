@@ -6,8 +6,8 @@ class TodoViewModel extends ChangeNotifier {
 
   List<TodoModel> get todos => _todos;
 
-  void postTodo(TodoModel todo) {
-    _todos.add(todo);
+  void postTodo(String title) {
+    _todos.add(TodoModel(title: title, isChecked: false));
     notifyListeners();
   }
 
@@ -16,18 +16,16 @@ class TodoViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void putTodo(TodoModel toDoIndex, TodoModel newTodo) {
-    int index = _todos.indexOf(toDoIndex);
+  void putTodo(int index, String title) {
     if (index != -1) {
-      if (newTodo.isDone) {
-        newTodo.isDone = true;
-      }
-      _todos[index] = newTodo;
+      _todos[index] =
+          TodoModel(title: title, isChecked: _todos[index].isChecked);
     }
     notifyListeners();
   }
 
-  List<TodoModel> getTodos() {
-    return _todos;
+  void checked(int id) {
+    _todos[id].isChecked = !_todos[id].isChecked;
+    notifyListeners();
   }
 }

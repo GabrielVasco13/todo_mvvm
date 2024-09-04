@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app_mvvm/app/view/widgets/button_floating_widget.dart';
+import 'package:todo_app_mvvm/app/view/widgets/task_item_widget.dart';
 import 'package:todo_app_mvvm/app/viewModel/todo_view_model.dart';
-import 'package:todo_app_mvvm/app/viewModel/widgets/floating_button.dart';
 
 class TodoView extends StatefulWidget {
   const TodoView({super.key});
@@ -56,13 +57,28 @@ class _TodoViewState extends State<TodoView> {
             child: ListenableBuilder(
               listenable: controller,
               builder: (context, child) {
-                return const Row(
-                  children: [],
+                return ListView.builder(
+                  itemCount: controller.todos.length,
+                  itemBuilder: (context, index) {
+                    return TaskItemWidget(
+                      index: index,
+                      title: controller.todos[index].title,
+                      isChecked: controller.todos[index].isChecked,
+                      onPressed: () {
+                        controller.checked(index);
+                      },
+                      submit: (value) {
+                        controller.putTodo(index, value);
+                      },
+                    );
+                  },
                 );
               },
             ),
           ),
-          const FloatingButton(),
+          ButtonFloating(
+            onSubmitted: controller.postTodo,
+          )
         ],
       ),
     );

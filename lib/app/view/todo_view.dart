@@ -11,12 +11,12 @@ class TodoView extends StatefulWidget {
 }
 
 class _TodoViewState extends State<TodoView> {
+  TodoViewModel controller = TodoViewModel();
+
   @override
   Widget build(BuildContext context) {
-    TodoViewModel controller = TodoViewModel();
-
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 31, 30, 30),
+      backgroundColor: const Color.fromARGB(255, 24, 82, 97),
       appBar: AppBar(
         toolbarHeight: 72,
         leading: const Icon(

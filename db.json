@@ -1,0 +1,24 @@
+{
+    "todos": [
+      {
+        "id": 1,
+        "title": "Buy groceries",
+        "isChecked": false
+      },
+      {
+        "id": 2,
+        "title": "Walk the dog",
+        "isChecked": true
+      },
+      {
+        "id": 3,
+        "title": "Read a book",
+        "isChecked": false
+      },
+      {
+        "id": 4,
+        "title": "Complete project",
+        "isChecked": true
+      }
+    ]
+  }
